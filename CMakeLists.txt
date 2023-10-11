@@ -78,6 +78,7 @@ include_directories(
     ${EXEC_ROOT}/Console
     ${EXEC_ROOT}/Exception
     ${EXEC_ROOT}/Frame
+    ${EXEC_ROOT}/Maps
     ${EXEC_ROOT}/Screen
     ${EXEC_ROOT}/Settings
     ${EXEC_ROOT}/WebFetch
@@ -89,6 +90,7 @@ set(EXEC_SRC
     ${EXEC_ROOT}/Console/Console.cpp
     ${EXEC_ROOT}/Exception/Exception.cpp
     ${EXEC_ROOT}/Frame/Frame.cpp
+    ${EXEC_ROOT}/Maps/Maps.cpp
     ${EXEC_ROOT}/Screen/Screen.cpp
     ${EXEC_ROOT}/Settings/Settings.cpp
     ${EXEC_ROOT}/WebFetch/WebFetch.cpp

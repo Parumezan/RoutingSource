@@ -51,7 +51,7 @@ namespace RoutingSource
         ERROR
     };
 
-    static const std::vector<std::string> WidgetNames = {"Console", "Settings"};
+    static const std::vector<std::string> WidgetNames = {"Console", "Settings", "Maps"};
 
 } // namespace RoutingSource
 

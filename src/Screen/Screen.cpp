@@ -2,7 +2,7 @@
 
 using namespace RoutingSource;
 
-Screen::Screen(std::shared_ptr<Console> console, std::shared_ptr<Settings> settings) : _console(console), _settings(settings)
+Screen::Screen(std::shared_ptr<Console> console, std::shared_ptr<Settings> settings, std::shared_ptr<Maps> maps) : _console(console), _settings(settings), _maps(maps)
 {
     this->_console->info("Initializing Screen module...");
     try {
@@ -35,6 +35,7 @@ Screen::Screen(std::shared_ptr<Console> console, std::shared_ptr<Settings> setti
         this->_widgetStatus = this->_settings->getWidgetsStatus();
         this->_console->state = this->_widgetStatus["Console"];
         this->_settings->state = this->_widgetStatus["Settings"];
+        this->_maps->state = this->_widgetStatus["Maps"];
 
         // Initialize things after initializing GUI if needed (like images)
         // this->_moon.initFrame();
@@ -105,6 +106,7 @@ void Screen::saveWidgetsStatus()
 {
     this->_widgetStatus["Console"] = this->_console->state;
     this->_widgetStatus["Settings"] = this->_settings->state;
+    this->_widgetStatus["Maps"] = this->_maps->state;
 }
 
 void Screen::resetWidgetsStatus()
@@ -112,6 +114,7 @@ void Screen::resetWidgetsStatus()
     if (this->_resetWidgets) {
         this->_console->state = false;
         this->_settings->state = false;
+        this->_maps->state = false;
 
         // update the reset status
         this->_resetWidgets = false;
@@ -124,6 +127,8 @@ void Screen::mainMenuBar()
         this->_console->frameLoop();
     if (this->_settings->state)
         this->_settings->frameLoop();
+    if (this->_maps->state)
+        this->_maps->frameLoop();
 
     if (ImGui::BeginMainMenuBar()) {
         if (ImGui::BeginMenu("File")) {
@@ -132,6 +137,7 @@ void Screen::mainMenuBar()
             ImGui::EndMenu();
         }
         if (ImGui::BeginMenu("Tools")) {
+            ImGui::MenuItem("Maps", "Ctrl+M", &this->_maps->state);
             ImGui::EndMenu();
         }
         if (ImGui::BeginMenu("Settings")) {

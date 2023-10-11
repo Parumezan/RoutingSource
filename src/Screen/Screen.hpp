@@ -3,6 +3,7 @@
 
 #include "Console.hpp"
 #include "Includes.hpp"
+#include "Maps.hpp"
 #include "Settings.hpp"
 
 namespace RoutingSource
@@ -13,6 +14,7 @@ namespace RoutingSource
             std::shared_ptr<GLFWwindow> _window;
             std::shared_ptr<Console> _console;
             std::shared_ptr<Settings> _settings;
+            std::shared_ptr<Maps> _maps;
             std::string _imguiIniPath;
             bool _resetWidgets;
 
@@ -24,7 +26,7 @@ namespace RoutingSource
             void mainMenuBar();
 
         public:
-            Screen(std::shared_ptr<Console> console, std::shared_ptr<Settings> settings);
+            Screen(std::shared_ptr<Console> console, std::shared_ptr<Settings> settings, std::shared_ptr<Maps> maps);
             ~Screen();
     };
 } // namespace RoutingSource
